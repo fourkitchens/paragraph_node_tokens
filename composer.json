@@ -4,7 +4,7 @@
   "description": "Provides functionality for compiling text paragraphs into a single token.",
   "homepage": "https://github.com/jimkeller/paragraph_node_tokens",
   "require": {
-    "drupal/core": "^8.8 || ^9",
+    "drupal/core": "^9 || ^10",
     "drupal/token": "^1.0",
     "drupal/paragraphs": "^1.12"
   }

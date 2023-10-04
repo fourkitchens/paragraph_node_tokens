@@ -44,7 +44,7 @@ function paragraph_node_tokens_tokens($type, $tokens, array $data, array $option
   $paragraph_text_types = \Drupal::config('paragraph_node_tokens.settings')->get('paragraph_text_types');
   $paragraph_text_fields = \Drupal::config('paragraph_node_tokens.settings')->get('paragraph_text_fields');
   $fallback_text_fields = \Drupal::config('paragraph_node_tokens.settings')->get('fallback_text_fields');
-  
+
   if ($type == 'node') {
 
     $token_service = \Drupal::token();
@@ -69,7 +69,7 @@ function paragraph_node_tokens_tokens($type, $tokens, array $data, array $option
               $paragraph_field_values = $node->get($paragraph_field)->getValue();
               // Iterate over paragraph entities on this node
               foreach( $paragraph_field_values as $paragraph_field_value ) {
-                $paragraph_entity = \Drupal\paragraphs\Entity\Paragraph::load( $paragraph_field_value['target_id'] );
+                $paragraph_entity = $paragraph_field_value['entity'] ?? \Drupal\paragraphs\Entity\Paragraph::load( $paragraph_field_value['target_id'] );
                 // Check to see if this entity is one of our text-based paragraphs
                 if ( $paragraph_entity && in_array($paragraph_entity->getType(), $paragraph_text_types) ) {
                     // Iterate over text fields, creating the text body
